@@ -1,4 +1,4 @@
-export default function TodoItem({ text, isCompleted, category }) {
+export default function TodoItem({ text, isCompleted, category, onToggleTodo, todoId}) {
   return (
     <li
       className={`group flex items-center justify-between gap-3 rounded-xl border p-4 transition-all ${
@@ -11,6 +11,7 @@ export default function TodoItem({ text, isCompleted, category }) {
         <button
           type="button"
           aria-label={isCompleted ? "Mark task as incomplete" : "Mark task as complete"}
+          onClick={() => onToggleTodo(todoId)}
           className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
             isCompleted
               ? "border-indigo-500 bg-indigo-600 text-white"

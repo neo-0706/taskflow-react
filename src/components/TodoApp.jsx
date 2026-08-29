@@ -35,12 +35,27 @@ export default function TodoApp() {
     };
     setTodos((prevTodos) => [...prevTodos, newItem]);
   };
+
+  const handleToggleTodo = (todoId) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            isCompleted: !todo.isCompleted,
+          };
+        }
+        return todo;
+      }),
+    );
+  };
+
   return (
     <div className="w-full max-w-xl rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8 space-y-6">
       <Header />
-      <TodoTabs />
+      <TodoTabs todosLength={todos.length} />
       <TodoInput onAddItem={handleAddItem} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onToggleTodo={handleToggleTodo} />
     </div>
   );
 }

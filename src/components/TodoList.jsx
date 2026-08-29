@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({todos}) {
+export default function TodoList({todos, onToggleTodo}) {
   return (
     <section className="space-y-3">
       <div className="flex items-center justify-between px-1">
@@ -15,6 +15,8 @@ export default function TodoList({todos}) {
             text={todo.text}
             isCompleted={todo.isCompleted}
             category={todo.category}
+            onToggleTodo={onToggleTodo}
+            todoId={todo.id}
           />
         ))}
       </ul>

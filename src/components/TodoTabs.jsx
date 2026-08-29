@@ -1,4 +1,4 @@
-export default function TodoTabs() {
+export default function TodoTabs({todosLength}) {
   return (
     <div className="flex items-center border-b border-slate-700/60 text-sm font-medium">
       <button
@@ -7,7 +7,7 @@ export default function TodoTabs() {
       >
         <span>All Tasks</span>
         <span className="rounded-full bg-indigo-500/20 px-2 py-0.5 text-xs font-semibold text-indigo-300">
-          3
+          {todosLength}
         </span>
       </button>
 
