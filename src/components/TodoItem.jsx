@@ -1,4 +1,4 @@
-export default function TodoItem({ text, isCompleted, category, onToggleTodo, todoId}) {
+export default function TodoItem({ text, isCompleted, category, onToggleTodo, todoId, onDeleteTodo}) {
   return (
     <li
       className={`group flex items-center justify-between gap-3 rounded-xl border p-4 transition-all ${
@@ -60,6 +60,7 @@ export default function TodoItem({ text, isCompleted, category, onToggleTodo, to
         <button
           type="button"
           aria-label="Delete task"
+          onClick={() => onDeleteTodo(todoId)}
           className="rounded-lg p-1.5 text-slate-500 opacity-75 transition-colors hover:bg-rose-500/10 hover:text-rose-400 group-hover:opacity-100 cursor-pointer"
         >
           <svg

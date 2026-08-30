@@ -36,6 +36,10 @@ export default function TodoApp() {
     setTodos((prevTodos) => [...prevTodos, newItem]);
   };
 
+  const handleDeleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
   const handleToggleTodo = (todoId) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) => {
@@ -55,7 +59,11 @@ export default function TodoApp() {
       <Header />
       <TodoTabs todosLength={todos.length} />
       <TodoInput onAddItem={handleAddItem} />
-      <TodoList todos={todos} onToggleTodo={handleToggleTodo} />
+      <TodoList
+        todos={todos}
+        onToggleTodo={handleToggleTodo}
+        onDeleteTodo={handleDeleteTodo}
+      />
     </div>
   );
 }
