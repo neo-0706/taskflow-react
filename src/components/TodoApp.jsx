@@ -5,6 +5,7 @@ import TodoList from "./TodoList";
 import { useState } from "react";
 
 export default function TodoApp() {
+  const [activeFilter, setActiveFilter] = useState("all");
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -54,13 +55,33 @@ export default function TodoApp() {
     );
   };
 
+  const handleFilterChange  = (status) => setActiveFilter(status);
+  
+  const activeTasks = todos.filter((todo) => !todo.isCompleted);
+  const completedTasks = todos.filter((todo) => todo.isCompleted);
+
+  let filteredTodos = todos;
+
+  if (activeFilter === "active") {
+    filteredTodos = activeTasks;
+  } else if (activeFilter === "completed") {
+    filteredTodos = completedTasks;
+  }
+
+
   return (
     <div className="w-full max-w-xl rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8 space-y-6">
       <Header />
-      <TodoTabs todosLength={todos.length} />
+      <TodoTabs
+        todosLength={todos.length}
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+        activeCount={activeTasks.length}
+        completedCount={completedTasks.length}
+      />
       <TodoInput onAddItem={handleAddItem} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         onToggleTodo={handleToggleTodo}
         onDeleteTodo={handleDeleteTodo}
       />
