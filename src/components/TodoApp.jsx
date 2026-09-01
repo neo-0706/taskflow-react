@@ -27,12 +27,12 @@ export default function TodoApp() {
     },
   ]);
 
-  const handleAddItem = (newText) => {
+  const handleAddItem = (newText, newCategory) => {
     const newItem = {
       id: Date.now(),
       text: newText,
       isCompleted: false,
-      category: "Setup",
+      category: newCategory,
     };
     setTodos((prevTodos) => [...prevTodos, newItem]);
   };
