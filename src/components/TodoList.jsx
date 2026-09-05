@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todos, onToggleTodo, onDeleteTodo }) {
+export default function TodoList({ todos, onToggleTodo, onDeleteTodo, onEditTodo }) {
   if (todos.length > 0) {
     return (
       <section className="space-y-3">
@@ -20,6 +20,7 @@ export default function TodoList({ todos, onToggleTodo, onDeleteTodo }) {
               onToggleTodo={onToggleTodo}
               todoId={todo.id}
               onDeleteTodo={onDeleteTodo}
+              onEditTodo={onEditTodo}
             />
           ))}
         </ul>

@@ -35,6 +35,9 @@ export default function TodoInput({ onAddItem }) {
         <option value="Setup" className="bg-slate-900 text-slate-100">
           Setup
         </option>
+        <option value="Setup" className="bg-slate-900 text-slate-100">
+          General
+        </option>
       </select>
       <button
         type="button"

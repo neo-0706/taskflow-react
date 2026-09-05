@@ -55,8 +55,8 @@ export default function TodoApp() {
     );
   };
 
-  const handleFilterChange  = (status) => setActiveFilter(status);
-  
+  const handleFilterChange = (status) => setActiveFilter(status);
+
   const activeTasks = todos.filter((todo) => !todo.isCompleted);
   const completedTasks = todos.filter((todo) => todo.isCompleted);
 
@@ -68,6 +68,20 @@ export default function TodoApp() {
     filteredTodos = completedTasks;
   }
 
+  const handleEditTodo = (todoId, newText, newCategory) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            text: newText,
+            category: newCategory,
+          };
+        }
+        return todo;
+      }),
+    );
+  };
 
   return (
     <div className="w-full max-w-xl rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8 space-y-6">
@@ -84,6 +98,7 @@ export default function TodoApp() {
         todos={filteredTodos}
         onToggleTodo={handleToggleTodo}
         onDeleteTodo={handleDeleteTodo}
+        onEditTodo={handleEditTodo}
       />
     </div>
   );
